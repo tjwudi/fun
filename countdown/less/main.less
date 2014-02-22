@@ -31,9 +31,43 @@ body {
   font-size: 74px;
   background-color: @navy;
   color: @aqua;
+  overflow: hidden;
   .card-size();
+
+  &.top {
+    height: 60px;
+  }
+
+  &.current {
+    &.top {
+      z-index: 4;
+    }
+    &.bottom {
+      z-index: 3;
+    }
+  }
+
+  &.next {
+    &.top {
+      z-index: 2;
+    }
+    &.bottom {
+      z-index: 1;
+    }  
+  }
 }
 
-.top {
-  height: 60px;
+.current.bottom {
+  -webkit-transition: all .75s linear;
+     -moz-transition: all .75s linear;
+      -ms-transition: all .75s linear;
+       -o-transition: all .75s linear;
+          transition: all .75s linear;
+  &.btm2m {
+    -webkit-transform: rotateX(90deg);
+       -moz-transform: rotateX(90deg);
+        -ms-transform: rotateX(90deg);
+         -o-transform: rotateX(90deg);
+            transform: rotateX(90deg);
+  }
 }

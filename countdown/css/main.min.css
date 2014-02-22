@@ -40,5 +40,9 @@ table{border-collapse:collapse;border-spacing:0}
 td,th{padding:0}
 body{padding:20px;overflow:hidden;display:inline-block}
 .container{float:left;position:relative;overflow:hidden;height:120px;width:80px}
-.card{position:absolute;left:0;top:0;line-height:120px;vertical-align:middle;text-align:center;font-size:74px;background-color:#001f3f;color:#7fdbff;height:120px;width:80px}
-.top{height:60px}
+.card{position:absolute;left:0;top:0;line-height:120px;vertical-align:middle;text-align:center;font-size:74px;background-color:#001f3f;color:#7fdbff;overflow:hidden;height:120px;width:80px}.card.top{height:60px}
+.card.current.top{z-index:4}
+.card.current.bottom{z-index:3}
+.card.next.top{z-index:2}
+.card.next.bottom{z-index:1}
+.current.bottom{-webkit-transition:all .75s linear;-moz-transition:all .75s linear;-ms-transition:all .75s linear;-o-transition:all .75s linear;transition:all .75s linear}.current.bottom.btm2m{-webkit-transform:rotateX(90deg);-moz-transform:rotateX(90deg);-ms-transform:rotateX(90deg);-o-transform:rotateX(90deg);transform:rotateX(90deg)}
