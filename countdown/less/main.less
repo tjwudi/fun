@@ -1,6 +1,7 @@
 @import "normalize";
 @import "colors";
 
+/* mixins */
 .clearfix() {
   overflow: hidden;
   display: inline-block;  
@@ -11,6 +12,13 @@
   width: 80px;
 }
 
+.inner-light (@x: 0, @y: 8px, @blur: 10px, @spread: 0, @alpha: 0.15) {
+  -webkit-box-shadow: inset @x @y @blur @spread rgba(255, 255, 255, @alpha);
+  -moz-box-shadow:    inset @x @y @blur @spread rgba(255, 255, 255, @alpha);
+  box-shadow:         inset @x @y @blur @spread rgba(255, 255, 255, @alpha);
+}
+
+/* actual styles */
 body {
   padding: 20px;
   .clearfix();
@@ -57,12 +65,17 @@ body {
   }
 }
 
-.current.bottom {
+.bottom, .top {
   -webkit-transition: all .75s linear;
-     -moz-transition: all .75s linear;
-      -ms-transition: all .75s linear;
-       -o-transition: all .75s linear;
-          transition: all .75s linear;
+   -moz-transition: all .75s linear;
+    -ms-transition: all .75s linear;
+     -o-transition: all .75s linear;
+        transition: all .75s linear;
+}
+
+.bottom {
+  .inner-light(0, -8px);
+
   &.btm2m {
     -webkit-transform: rotateX(90deg);
        -moz-transform: rotateX(90deg);
@@ -70,4 +83,8 @@ body {
          -o-transform: rotateX(90deg);
             transform: rotateX(90deg);
   }
+}
+
+.top {
+  .inner-light();
 }

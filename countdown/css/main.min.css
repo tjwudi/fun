@@ -45,4 +45,6 @@ body{padding:20px;overflow:hidden;display:inline-block}
 .card.current.bottom{z-index:3}
 .card.next.top{z-index:2}
 .card.next.bottom{z-index:1}
-.current.bottom{-webkit-transition:all .75s linear;-moz-transition:all .75s linear;-ms-transition:all .75s linear;-o-transition:all .75s linear;transition:all .75s linear}.current.bottom.btm2m{-webkit-transform:rotateX(90deg);-moz-transform:rotateX(90deg);-ms-transform:rotateX(90deg);-o-transform:rotateX(90deg);transform:rotateX(90deg)}
+.bottom,.top{-webkit-transition:all .75s linear;-moz-transition:all .75s linear;-ms-transition:all .75s linear;-o-transition:all .75s linear;transition:all .75s linear}
+.bottom{-webkit-box-shadow:inset 0 -8px 10px 0 rgba(255,255,255,0.15);-moz-box-shadow:inset 0 -8px 10px 0 rgba(255,255,255,0.15);box-shadow:inset 0 -8px 10px 0 rgba(255,255,255,0.15)}.bottom.btm2m{-webkit-transform:rotateX(90deg);-moz-transform:rotateX(90deg);-ms-transform:rotateX(90deg);-o-transform:rotateX(90deg);transform:rotateX(90deg)}
+.top{-webkit-box-shadow:inset 0 8px 10px 0 rgba(255,255,255,0.15);-moz-box-shadow:inset 0 8px 10px 0 rgba(255,255,255,0.15);box-shadow:inset 0 8px 10px 0 rgba(255,255,255,0.15)}
