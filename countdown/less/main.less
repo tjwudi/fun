@@ -1,0 +1,39 @@
+@import "normalize";
+@import "colors";
+
+.clearfix() {
+  overflow: hidden;
+  display: inline-block;  
+}
+
+.card-size() {
+  height: 120px;
+  width: 80px;
+}
+
+body {
+  padding: 20px;
+  .clearfix();
+}
+
+.container {
+  float: left; /* shrink to fit */
+  position: relative;
+  overflow: hidden;
+  .card-size();
+}
+
+.card {
+  position: absolute; left: 0; top: 0;
+  line-height: 120px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 74px;
+  background-color: @navy;
+  color: @aqua;
+  .card-size();
+}
+
+.top {
+  height: 60px;
+}
