@@ -35,8 +35,11 @@
 <body>
 
 <header class="container">
-	<div class="row tm">
-		<div class="four columns" ><img src="images/logo.png" class="scale-with-grid" alt="LOGO"></div>
+	<div class="row tp">
+		<div class="four columns clearfix" >
+			<img src="images/logo.png" class="scale-with-grid fl" alt="LOGO">
+			<button class="fr twt-r8" id="hmenu">Menu</button>
+		</div>
 		<div class="three columns offset-by-four hide-mob twt-r8">
 			<img src="images/tel.png" alt="" class="twt-r4">
 			<span>123-1234-123</span>
@@ -49,13 +52,45 @@
 				<li><img src="images/social.png" alt=""></li>
 				<li><img src="images/social.png" alt=""></li>
 				<li><img src="images/social.png" alt=""></li>
-			</ul>
+			</ul>	
 		</div>
 		<div class="one column twt-r8 hide-mob">
 			<img src="images/search.png" alt="">
 		</div>
-	</div>
+	</div> <!-- logo与顶部标识 -->
 
+	<nav class="row tp">
+		<ul class="sixteen columns">
+			<li class="four columns alpha">
+				<img class="scale-with-grid" src="images/nav-icon.png" alt="Navigation Icon">
+				<div class="clearfix ib">
+					<a href="#" class="fl cb">Home Page</a>
+					<span class="fl cb">back to homepage</span>
+				</div>
+			</li>
+			<li class="four columns">
+				<img class="scale-with-grid" src="images/nav-icon.png" alt="Navigation Icon">
+				<div class="clearfix ib">
+					<a href="#" class="fl cb">Home Page</a>
+					<span class="fl cb">back to homepage</span>
+				</div>
+			</li>
+			<li class="four columns">
+				<img class="scale-with-grid" src="images/nav-icon.png" alt="Navigation Icon">
+				<div class="clearfix ib">
+					<a href="#" class="fl cb">Home Page</a>
+					<span class="fl cb">back to homepage</span>
+				</div>
+			</li>
+			<li class="four columns omega">
+				<img class="scale-with-grid" src="images/nav-icon.png" alt="Navigation Icon">
+				<div class="clearfix ib">
+					<a href="#" class="fl cb">Home Page</a>
+					<span class="fl cb">back to homepage</span>
+				</div>
+			</li>
+		</ul>		
+	</nav> <!-- 导航栏 -->
 </header>
 
 <main class="container">
@@ -66,5 +101,6 @@
 	
 </footer>
 
+<script src="scripts/main.min.js"></script>
 </body>
 </html>

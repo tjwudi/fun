@@ -21,13 +21,32 @@
 /* #Site Styles
 ================================================== */
 
+* {
+	// 全局颜色重置
+	color: @font-color-base; 
+}
+
 header {
+	#hmenu {
+		display: none;
+	}
+
 	.iclist {
 		list-style-type: none;
 		li {
 			display: block;
 			float: left;
 			margin-left: 4px;
+		}
+	}
+
+	nav {
+		overflow: hidden;
+		ul { list-style-type: none; }
+		li {
+			display: block;
+			float: left;
+			font-size: 12px;
 		}
 	}
 }
@@ -45,6 +64,21 @@ header {
 	@media only screen and (max-width: 767px) {
 		.hide-mob {
 			display: none !important;
+		}
+
+		header {
+			#hmenu {
+				display: inline-block;
+			}
+
+			nav {
+				display: none;
+				height: 0;
+				&.visible-mob { display: inline-block; height: auto; } 
+				li {
+					padding: 12px;
+				}
+			}
 		}
 	}
 
