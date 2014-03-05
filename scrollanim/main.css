@@ -1,0 +1,11 @@
+section {
+  text-align: center;
+}
+
+span.featured {
+  display: inline-block;
+  font-family: 'Gafata', sans-serif;
+  margin-top: 156px;
+  margin-bottom: 156px;
+  font-size: 97px;
+}
