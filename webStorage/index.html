@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Storage</title>
+  <link href='http://fonts.googleapis.com/css?family=Gafata' rel='stylesheet' type='text/css'>
+  <style>
+    .ws-test {
+      font-family: 'Gafata', sans-serif;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    button, button:hover {
+      border: none;
+      outline: none;
+      background: none;
+      height: 50px;
+      width: 80px;
+      background-color: #0074D9;
+      cursor: pointer;
+      color: #7FDBFF;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <section class="ws-test">
+    <hgroup>
+      <h2>using localStorage</h2>
+      <h4 id="tm-ls">You've clicked the button 0 times</h4>
+    </hgroup>
+    <div>
+      <button id="btn-ls">Click!</button>
+    </div>
+  </section>
+
+  <section class="ws-test">
+    <hgroup>
+      <h2>using sessionStorage</h2>
+      <h4 id="tm-ss">You've clicked the button 0 times</h4>
+    </hgroup>
+    <div>
+      <button id="btn-ss">Click!</button>
+    </div>
+  </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
