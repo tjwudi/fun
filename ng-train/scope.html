@@ -1,0 +1,22 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Binding</title>
+  <script src="js/angular.js"></script>
+</head>
+<body>
+
+<div ng-controller="MyController">
+  <p>Hello {{name}}</p>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.controller('MyController', function($scope) {
+  $scope.name = "John Wu";
+});
+</script>
+</body>
+</html>

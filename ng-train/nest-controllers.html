@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<div ng-controller="ParentController">
+  <p> I am in the parent scope, and my value is {{data.value}}</p>
+  <div ng-controller="ChildController">
+    <p> I am in the child scope, but I can still access the parent scope's value, which is {{data.value}}</p>
+  </div>
+</div>
+  
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('ParentController', function($scope) {
+  $scope.data = { 
+    value: "John Wu"
+  };
+});
+app.controller('ChildController', function($scope) {
+  
+});
+</script>
+</body>
+</html>

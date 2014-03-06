@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<div class="container" ng-controller="addMachineController">
+  <h2>You've clicked the button for {{count}} times.</h2>
+  <div><button ng-click="add(1)">Add</button></div>
+  <div><button ng-click="sub(1)">Substract</button></div>
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+  var app = angular.module('myApp', []);
+  app.controller('addMachineController', function($scope) {
+    // Variables instanciation
+    $scope.count = 0;
+
+    // Functionalities
+    $scope.add = function(step) {
+      $scope.count += step;
+    }
+    $scope.sub = function(step) {
+      if ($scope.count == 0) { return; }
+      $scope.count -= step;
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app>
+<head>
+  <meta charset="UTF-8">
+  <title>Binding</title>
+  <script src="js/angular.js"></script>
+</head>
+<body>
+<div no-controller>
+  <input ng-model="person.name" type="text" placeholder="Your name">
+  <p>{{person.name}}</p>
+</div>
+
+<div ng-controller="MyController">
+  <h5>{{clock.now}}</h5>
+</div>
+
+<script>
+  function MyController($scope) {
+    var updateClock = function() {
+      $scope.clock = {
+        now: new Date()
+      }
+    };
+    setInterval(function() {
+      $scope.$apply(updateClock);
+    }, 1000);
+    updateClock();
+  }
+</script>
+</body>
+</html>
