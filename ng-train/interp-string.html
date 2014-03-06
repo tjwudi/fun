@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Interpolate a string</title>
+</head>
+<body>
+
+<div ng-controller="MyController">
+  <input type="email" ng-model="to" placeholder="Recipient">
+  <textarea name="" id="" cols="30" rows="10" ng-model="emailBody"></textarea>
+  <p>
+    <pre>{{previewText}}</pre>
+  </p>
+</div>
+  
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('MyController', function($scope, $interpolate) {
+  $scope.$watch('emailBody', function(body) {
+    if (body) {
+      var template = $interpolate(body);
+      $scope.previewText = template({ to: $scope.to })
+    }
+  });
+});
+</script>
+</body>
+</html>

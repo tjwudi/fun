@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<div ng-controller="MyController">
+  <div>
+    <input type="text" ng-model="data.expr">
+  </div>
+  <p> {{data.parsedExpr}} </p>
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('MyController', function($scope, $parse) {
+  $scope.data = {
+    expr: "",
+    parsedExpr: ""
+  };
+
+  $scope.$watch('data.expr', function(newVal, oldVal, scope) {
+    var parseFun = $parse(newVal);
+    $scope.data.parsedExpr = parseFun(scope);
+  });
+});
+</script>
+</body>
+</html>

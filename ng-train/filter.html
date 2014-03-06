@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Filter</title>
+</head>
+<body>
+
+<div ng-controller="MyController">
+  <div>
+    <input type="text" ng-model="num">
+  </div>
+  <p>{{ num | number: 3 }}</p>
+  <p>{{ num | currency  }}</p>
+  <p>{{ today }}</p>
+  <p>{{ ["Hey", "Hello"] | filter:"!Hey" }}</p>
+  <p>{{ [{ a: 1, b: 2 }, { a: 5, b: 4 }, { a: 91, b: 44 }] | filter:{a: 91} }}</p>
+  <p>{{ ['Alice', 'Alice and Bob', 'Bob', 'Actually'] | filter:isBeginWithA }} </p>
+  <p>{{ [{teacher: 'sucks'}] | json }}</p>
+  <p>{{ 'Alice and Bob are really popular' | limitTo:10 }} </p>
+  <p>{{ [{
+    'name': 'Ari',
+    'status': 'awake'
+    }, {
+    'name': 'Q',
+    'status': 'sleeping'
+    }, {
+    'name': 'Nate',
+    'status': 'awake'
+    }] | orderBy:'name':true }}</p>
+  <p>{{ [{
+    'name': 'Ari',
+    'status': 'awake'
+    }, {
+    'name': 'Q',
+    'status': 'sleeping'
+    }, {
+    'name': 'Nate',
+    'status': 'awake'
+    }] | orderBy:'name':false }}</p>
+
+    <p>{{ 'gggg' | capitalizeF }}</p>
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', ['myApp.filters']);
+app.controller('MyController', function($scope) {
+  $scope.today = new Date();
+
+  $scope.isBeginWithA = function(el) {
+    return !! /^A.*$/.exec(el);
+  }
+});
+
+
+var myAppFilters = angular.module('myApp.filters', []);
+myAppFilters.filter('capitalizeF', function( ) {
+  return function(input) {
+    return input[0].toUpperCase() + input.slice(1);
+  }
+});
+</script>
+</body>
+</html>
