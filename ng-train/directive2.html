@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Directive 2</title>
+</head>
+<body>
+
+<div wd-dir wd-link-url="http://google.com" wd-link-text="Google"></div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module("myApp", []);
+app.directive('wdDir', function() {
+  return {
+    restrict: 'A',
+    scope: {
+      wdLinkUrl: "@",
+      wdLinkText: "@"
+    },
+    template: '<a href="{{wdLinkUrl}}"> {{wdLinkText}} </a>',
+    replace: true
+  }
+});
+</script>
+</body>
+</html>

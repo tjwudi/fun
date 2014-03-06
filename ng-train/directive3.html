@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Directive 3</title>
+</head>
+<body>
+
+<div class="container">
+  <div>
+    <input type="text" ng-model="outerText">
+    <div wd-dir set-text="outerText"></div>
+  </div>
+</div>
+
+<script src="js/angular.js"> </script>
+<script>
+var app = angular.module('myApp', []);
+app.directive('wdDir', function() {
+  return {
+    restrict: 'A',
+    replace: true,
+    scope: {  wdText: "=setText"  },
+    template: '<div> \
+      <input type="text" ng-model="wdText"/> \
+      <p> {{wdText}} </p> \
+    </div>'
+  };
+});
+</script>
+</body>
+</html>

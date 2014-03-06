@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Built-in Directives</title>
+</head>
+<body>
+
+<div>
+  <button ng-disabled="countDown">{{countDown}}s to go</button>
+</div>
+<div>
+  <img ng-src="{{deferImage}}">
+</div>
+
+<div ng-controller="SomeController">
+{{ someBareValue }}
+<button ng-click="someAction()">Communicate to child</button> <div ng-controller="ChildController">
+    {{ someBareValue }}
+<button ng-click="childAction()">Communicate to parent</button> </div>
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.run(function($rootScope, $timeout) {
+  $rootScope.countDown = 10;
+  $rootScope.doCountDown = function() {
+    if ($rootScope.countDown > 0) {
+      $rootScope.countDown --;
+      $timeout($rootScope.doCountDown, 1000);
+    }
+  }
+  $timeout($rootScope.doCountDown, 1000);
+
+
+  $timeout(function() {
+    $rootScope.deferImage = "http://ww3.sinaimg.cn/bmiddle/bcb955adjw1edxxda2fp3j21ct2pgu0x.jpg";
+  }, 4000);
+});
+
+app.controller('SomeController', function($scope) {
+  // anti-pattern, bare value
+    $scope.someBareValue = 'hello computer';
+// set actions on $scope itself, this is okay 
+    $scope.someAction = function() {
+      // sets {{ someBareValue }} inside SomeController and ChildController
+      $scope.someBareValue = 'hello human, from parent';
+    };
+})
+.controller('ChildController', function($scope) {
+$scope.childAction = function() {
+// sets {{ someBareValue }} inside ChildController 
+$scope.someBareValue = 'hello human, from child';
+}; 
+});
+
+</script> 
+</body>
+</html>

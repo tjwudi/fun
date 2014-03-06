@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Validation</title>
+</head>
+<body>
+
+<div ng-controller="MyController">
+<form name="myForm" action="#" novalidate>
+  <input type="text" name="username" ng-model="username" required/>
+  <button type="submit" ng-show="myForm.username.$valid">OK</button>
+</form>
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('MyController', function($scope) {
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<div ng-include="'/template/1.html'" 
+  ng-init="name = 'John Wu'">
+  
+</div>
+
+<button ng-click="switch()">show</button>
+<div ng-if="seeIf">
+  <p>I am here!</p>
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.run(function($rootScope) {
+  $rootScope.switch = function() {
+    $rootScope.seeIf = !$rootScope.seeIf;
+  }
+  $rootScope.seeIf = true;
+});
+</script>
+</body>
+</html>

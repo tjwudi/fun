@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Repeat!</title>
+  <style>
+  .even {
+    background-color: #c0c0c0;
+  }
+  .odd {
+    background-color: #3D9970;
+  }
+  </style>
+</head>
+
+<body>
+
+<div ng-controller="MyController">
+  <ul>
+    <li ng-repeat="person in data.people" ng-class="{ even: !!$even, odd: !!odd }">
+      {{ person }}
+    </li>
+  </ul>
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('MyController', ['$scope', function($scope) {
+  $scope.data = {};
+  $scope.data.people = ['Jack', 'Amy', 'Tomsome', 'Adele', 'Adobe', 'Justin'];
+}]);
+</script>
+</body>
+</html>
