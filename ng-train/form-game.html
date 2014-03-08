@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>ng-form</title>
+</head>
+<body>
+
+<form name="login_form"  novalidate>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input id="username" name="username" ng-model="username" type="text" required/>
+    <span ng-show="login_form.username.$invalid && login_form.username.$dirty">No!</span>
+  </div>
+</form>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.run(function($rootScope) {
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Directive 7</title>
+</head>
+<body>
+
+<div>{{myProperty}}</div>
+<div>
+  <div my-dir>
+    
+  </div>
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.directive('myDir', function() {
+  return {
+    scope: true,
+    link: function($scope) {
+      $scope.myProperty = 'Hello, yo';
+    }
+  };
+});
+app.controller('MyController', function($scope) {
+  $scope.myProperty = 'Hello, world';
+});
+</script>
+</body>
+</html>

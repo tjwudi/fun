@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Directive 6</title>
+</head>
+<style>
+  div {
+    padding: 20px; 
+  }
+    div.d1 {
+      background-color: green;
+      color: white;
+    }
+    div.d2 {
+      background-color: blue;
+    }
+    div.d3 {
+      background-color: skyblue;
+      color: black;
+    }
+</style>
+<body>
+
+<div class="d1" ng-init="propertyA = 'propertyAValue'">
+  This is d1.
+  <div class="d2" ng-init="propertyB = 'propertyBValue'" ng-controller="SomeController">
+    This is d2. {{ propertyA }}
+    <div class="d3">
+      This is d3.
+    </div>
+  </div>
+</div>
+
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.directive('myDir', function() {
+  return {
+
+  }
+});
+app.controller('SomeController', function() {});
+</script>
+</body>
+</html>

@@ -34,9 +34,14 @@ app.run(function($rootScope, $timeout) {
   $timeout($rootScope.doCountDown, 1000);
 
 
+
   $timeout(function() {
     $rootScope.deferImage = "http://ww3.sinaimg.cn/bmiddle/bcb955adjw1edxxda2fp3j21ct2pgu0x.jpg";
   }, 4000);
+});
+
+app.controller('MyAnotherController', function($scope) {
+  $scope.someVar = "myVar";
 });
 
 app.controller('SomeController', function($scope) {

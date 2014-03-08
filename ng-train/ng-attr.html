@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>ng-attr-xxxx</title>
+</head>
+<body>
+
+<svg>
+  <circle ng-attr-cx="{{cx}}" fill="red"></circle>
+</svg>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.run(function($rootScope) {
+  $rootScope.cx = 5;
+});
+</script>
+</body>
+</html>
