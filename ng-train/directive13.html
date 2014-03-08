@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Directive 13</title>
+</head>
+<body>
+
+<div my-dir class="outer" my-attr="ShaBiGuoYu">
+  <span>Inside here!</span>
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.directive('myDir', function() {
+  return {
+    transclude: true,
+    compile: function(tEle, tAttrs, transcludeFn) {
+      console.dir(tEle);
+      console.dir(tAttrs);
+      console.dir(transcludeFn);
+    }
+  }
+});
+</script>
+</body>
+</html>
