@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Transclude</title>
+</head>
+<body>
+<div ng-init="outerAttr='I am outer attr!'"></div>
+<div my-dir myattr="attr!">
+  <ul>
+    <li>myattr: {{msg}}</li>
+    <li>outerAttr: {{outerAttr}}</li>
+  </ul>
+</div>
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.directive('myDir', function() {
+  return {
+    restrict: 'A',
+    scope: { msg: '@myattr' },
+    transclude: true,
+    template: '<div> <span>  {{ msg }} from template </span> <span ng-transclude>  <span> </div>'
+  }
+});
+</script>
+</body>
+</html>
