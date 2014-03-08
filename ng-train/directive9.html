@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Directive 9</title>
+</head>
+<body>
+
+<div ng-controller="MyController" ng-init="myvar = 'Outer' ">
+  {{ myvar }}
+  <div my-dir>
+    {{ myvar }}
+  </div>
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+angular.module('myApp', [])
+.directive('myDir', function() {
+  return {
+    scope: {}
+  }
+})
+.controller('MyController', function () {
+  
+});
+</script>
+</body>
+</html>

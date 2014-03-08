@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Directive 8</title>
+</head>
+<body>
+
+
+<div ng-controller="MyController" ng-init="myvar = 'Hello, my var.'">
+  Outer scope: {{ myvar }}
+  <div my-dir myvar="testModel">
+    Inner scope: {{ innervar }}
+  </div>
+  <input type="text" ng-model="testModel">
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.directive('myDir', function() {
+  return {
+    scope: { innervar: "=myvar" },
+    template: '<div> {{ innervar }} </div>',
+    link: function($scope, el, attr) {
+      $scope.innervar = "Hey!";
+    }
+  }
+});
+app.controller('MyController', function() {});
+</script>
+</body>
+</html>

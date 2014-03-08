@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Directive 10</title>
+</head>
+<body>
+
+<div ng-init="myvar = 'MyVar!' "></div>
+Level A : {{ myvar }}
+<div my-true-dir>
+  Level B : {{ myvar }}
+</div>
+<div my-obj-dir>
+  Level C: {{ myvar }}
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.directive('myTrueDir', function() {
+  return {
+    scope: true
+  };
+});
+app.directive('myObjDir', function() {
+  return {
+    scope: {}
+  };
+});
+</script>
+</body>
+</html>
