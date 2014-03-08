@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Directive 12</title>
+</head>
+<body>
+
+<div style="background-color: aqua">
+  <div my-dir></div>
+</div>
+
+<div style="background-color: skyblue" ng-controller="SkyBlueController"
+      ng-init="name = 'Name defined in outer controller'">
+  <div my-dir></div>
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.directive('myDir', function() {
+  return {
+    restrict: 'A',
+    controller: function() {
+      this.name = 'Name defined in directive controller';
+    },
+    controllerAs: 'MyDirController',
+    template: '<div> <span> Level 1: {{MyDirController.name}} </span> <span> Level 2: {{name}} </span>  </div>'
+  }
+});
+app.controller('SkyBlueController', function() {});
+</script>
+</body>
+</html>
