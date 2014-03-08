@@ -8,24 +8,24 @@
 
 <div ng-init="myvar = 'MyVar!' "></div>
 Level A : {{ myvar }}
-<div my-true-dir>
-  Level B : {{ myvar }}
-</div>
-<div my-obj-dir>
-  Level C: {{ myvar }}
-</div>
+<div my-true-dir></div>
+<div my-obj-dir></div>
 
 <script src="js/angular.js"></script>
 <script>
 var app = angular.module('myApp', []);
 app.directive('myTrueDir', function() {
   return {
-    scope: true
+    scope: true,
+    replace: true,
+    template: '<div> Level B : {{ myvar }} </div>'
   };
 });
 app.directive('myObjDir', function() {
   return {
-    scope: {}
+    scope: {},
+    replace: true,
+    template: '<div> Level C: {{ myvar }} </div>'
   };
 });
 </script>
