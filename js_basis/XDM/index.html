@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>XDM demo</title>
+  <style>
+    iframe {
+      border: 4px solid blue;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div>Outside iframe</div>
+<iframe src="frame.html" frameborder="0" id="my-frame"></iframe>
+<button id="send-message">Send a message!</button>
+
+<script>
+var EventUtil = {};
+EventUtil.addEventHandler = function(obj, eventType, handler) {
+  if (!! obj.attachEvent) {
+    obj.attachEvent('on' + eventType, handler);
+  }
+  else if (!! obj.addEventListener) {
+    obj.addEventListener(eventType, handler, false); // not using capture here
+  }
+  else {
+    obj['on' + eventType] = handler;
+  }
+};
+
+var myFrame = document.getElementById('my-frame');
+EventUtil.addEventHandler(document.getElementById('send-message'), 'click', function(event) {
+  window.postMessage('Hello, world!', 'http://127.0.0.1:8080');
+});
+
+</script>
+</body>
+</html>

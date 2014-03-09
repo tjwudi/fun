@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>iFrame page</title>
+</head>
+<body>
+<div>So ... I am in the frame now!</div>
+
+<script>
+var EventUtil = {};
+EventUtil.addEventHandler = function(obj, eventType, handler) {
+  if (!! obj.attachEvent) {
+    obj.attachEvent('on' + eventType, handler);
+  }
+  else if (!! obj.addEventListener) {
+    obj.addEventListener(eventType, handler, false); // not using capture here
+  }
+  else {
+    obj['on' + eventType] = handler;
+  }
+};
+
+EventUtil.addEventHandler(window, 'message', function(event) {
+  if (event.origin === 'http://127.0.0.1:8080') {
+    document.write(event.data);
+  }
+  else {
+    throw new Error('Message origin not trusted');
+  }
+});
+
+</script>
+</body>
+</html>
