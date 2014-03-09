@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Directive communication with controllers</title>
+</head>
+<body>
+
+<div my-dir-a my-dir-b b-value="Hello from my-dir-b"></div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.directive('myDirA', function() {
+  return {
+    require: 'myDirB',
+    link: function(scope, el, attrs, myDirBController) {
+      $scope.valueFromDirB = myDirBController.getBValue();
+    },
+    template: '<div> {{ valueFromDirB }} </div>'
+  };
+});
+app.directive('myDirB', function() {
+  return {
+    scope: {
+      bValue: "@bValue"
+    },
+    controller: function($scope) {
+      this.getBValue() {
+        return $scope.bValue;
+      }
+    }
+  };
+});
+</script>
+</body>
+</html>

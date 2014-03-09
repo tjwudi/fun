@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Directive 15</title>
+</head>
+<body>
+
+<input type="text" ng-model="t" my-dir>
+<div ng-bind="t"></div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.directive('myDir', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, ele, attrs, ngModelController) {
+      ele.bind('click', function() {
+        console.dir(ngModelController.$dirty);
+      });
+    }
+  }
+});
+</script>
+</body>
+</html>

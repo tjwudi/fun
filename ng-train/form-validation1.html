@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Validation</title>
+</head>
+<body>
+
+<form name="my_form">
+  <input type="text" name="password" ng-model="password" ensure-token>
+  <div ng-show="my_form.password.$error.passwordIncorrect">No! :)</div>
+</form>
+
+  
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.directive('ensureToken', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, ele, attrs, ngModelController) {
+      scope.$watch(attrs.ngModel, function() {
+        if (ngModelController.$viewValue !== 'password') {
+          ngModelController.$setValidity('passwordIncorrect', false);
+        }
+        else {
+          ngModelController.$setValidity('passwordIncorrect', true);
+        }
+      });
+    }
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Validation 3</title>
+  <link href='http://fonts.googleapis.com/css?family=Gafata' rel='stylesheet' type='text/css'>
+  <style>
+    * { 
+      font-family: 'Gafata', sans-serif; 
+    }
+    .inlf {
+      display: inline-block;
+      background-color: #7FDBFF;
+      padding: 24px 36px;
+    }
+    .ng-invalid input {
+      border: 2px solid #FF4136;
+    }
+    .ng-valid input {
+      border: 2px solid #2ECC40;
+    }
+    .form-group .ipwst {
+      display: inline-block;
+      position: relative;
+    }
+      .form-group .ipwst .st {
+        position: absolute;
+        left: 8px;
+        top: 4px;
+        font-size: 12px;
+      }
+      .form-group .ipwst input {
+        text-indent: 12px;
+      }
+  </style>
+</head>
+
+<body>
+
+<div>
+  <form name="login_form" class="inlf" novalidate>
+    <div class="form-group">
+      <label for="password">Password: </label>
+      <div class="ipwst">
+        <span ng-if="login_form.password.$invalid" class="st">×</span>
+        <span ng-if="login_form.password.$valid" class="st">√</span>
+        <input type="password" name="password" ng-model="password" id="password" ensure-token>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.directive('ensureToken', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, el, attrs, ngModelController) {
+      scope.$watch(attrs.ngModel, function() {
+        // can change to Ajax validation call here
+        if (ngModelController.$viewValue === 'password') {
+          ngModelController.$setValidity('correct', true);
+        }
+        else {
+          ngModelController.$setValidity('correct', false);
+        }
+      });
+    }
+  }
+});
+</script>
+</body>
+</html>

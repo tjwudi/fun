@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Directive 14</title>
+</head>
+<body>
+
+<div my-dir another-dir>
+  <span>Inside here!</span>
+</div>
+
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+
+app.directive('myDir', function() {
+  return {
+    require: 'anotherDir',
+    link: function(scope, element, attrs, anotherDir) {
+      console.dir(anotherDir);
+    }
+  }
+});
+
+app.directive('anotherDir', function() {
+  return {
+    controller: function($scope) {
+      $scope.sayHello = function() {
+        console.log('Hello!');
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
