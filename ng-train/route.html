@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Route</title>
+</head>
+<body>
+
+<header>
+  <h1>Header</h1>
+</header>
+<div class="content">
+  <div ng-view></div>
+</div>
+<footer>
+  <h1>Footer</h1>
+</footer>
+
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script>
+var app = angular.module('myApp', ['ngRoute']);
+app.config(['$routeProvider', function($routeProvider) {
+  $routeProvider
+    .when('/1', { templateUrl: 'template/route-1.html' })
+    .when('/2', { templateUrl: 'template/route-2.html', controller: 'NameController',
+                    resolve: {
+                      'age': function() { return 19; }
+                    }
+                 })
+    .otherwise({ redirectTo: '/1' });
+}]);
+
+app.controller('NameController', function($scope, age) {
+  $scope.data = {};
+  $scope.data.name = 'John Wu';
+  $scope.data.age = age;
+});
+</script>
+</body>
+</html>
