@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Service 4</title>
+</head>
+<body>
+
+<div ng-controller="UserController">
+  Hello, {{userName}}.
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var appService = angular.module('myApp.service', []);
+appService.service('userInfo', function() {
+  this.getUserName = function() { 
+    return 'John Wu';
+  };
+});
+appService.config(function($provide) {
+  $provide.decorator('userInfo', function($delegate, $log) {
+    var getUserNameDecorated = function() {
+      $log.info('getUserName invoked!');
+      return $delegate.getUserName();
+    }
+
+    return {
+      getUserName: getUserNameDecorated
+    }
+  });
+});
+
+var app = angular.module('myApp', ['myApp.service']);
+app.controller('UserController', function($scope, userInfo) {
+  $scope.userName = userInfo.getUserName();
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Service 3</title>
+</head>
+<body>
+
+<div ng-controller="UserController">
+  Hello {{userName}}.
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.constant('USER_NAME', 'John Wu');
+
+app.controller('UserController', function($scope, USER_NAME) {
+  $scope.userName = USER_NAME;
+});
+</script>
+</body>
+</html>
