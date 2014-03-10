@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>XHR</title>
+</head>
+<body>
+
+<form name="login_form" ng-controller="LoginFormController" ng-submit="fn.submit()" novalidate>
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" name="username" ng-model="username" id="username">
+  </div>
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="passoword" name="password" ng-model="password" id="password">
+  </div>
+  <div class="form-group">
+    <button type="submit" ng-disabled="status.waitingResponse">OK</button>
+  </div>
+  <div class="form-group">
+    <span ng-if="status.waitingResponse">请稍等……</span>
+  </div>
+</form>
+
+<script src="js/angular.js"></script>
+<script>
+var appService = angular.module('myApp.service', []);
+appService.value('apihost', 'http://127.0.0.1:3000');
+appService.service('userAuth', function($http, apihost) {
+  this.checkUserValidity = function(username, password) {
+    return $http({
+      method: 'POST',
+      headers:{
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, X-Requested-With'
+            },
+      data: { username: username, password: password },
+      url: apihost + '/login'
+    })
+  }
+});
+
+var app = angular.module('myApp', ['myApp.service']);
+app.config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }
+]);
+app.controller('LoginFormController', ['$scope', '$log', 'userAuth', function($scope, $log, userAuth) {
+  $scope.fn = {};
+  $scope.fn.submit = function() {
+    $scope.status.waitingResponse = true;
+    userAuth.checkUserValidity($scope.username, $scope.password)
+      .success(function(data) {
+        console.log(data);
+      });
+  } 
+
+  $scope.status = {
+    waitingResponse: false
+  }
+}]);
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Resource</title>
+</head>
+<body>
+
+
+
+<script src="components/angular/angular.min.js"></script>
+<script src="components/angular-resource/angular-resource.min.js"></script>
+<script>
+var app = angular.module('myApp', ['ngResource']);
+app.run(function($rootScope, $resource) {
+  var User = $resource('/users/:uid');
+  User.get({ uid: 0 }, 
+    function(resp) {
+      console.log(resp);
+    });
+});
+</script>
+</body>
+</html>
