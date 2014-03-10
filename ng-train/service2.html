@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Service 2</title>
+</head>
+<body>
+
+<div ng-controller="UserController">
+  Hello, {{userName}};
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var appService = angular.module('myApp.service', []);
+
+appService.service('infoProcess', function() {
+  this.merge = function(objA, objB) {
+    var result = {};
+    for (var keyA in objA) {
+      if (! objA.hasOwnProperty(keyA)) { continue; }
+      result[keyA] = objA[keyA];
+    }
+    for (var keyB in objB) {
+      if (! objB.hasOwnProperty(keyB)) { continue; }
+      result[keyB] = objB[keyB];
+    }
+    return result;
+  }
+});
+
+appService.provider('userInfo', function userInfoProvider(infoProcess) {
+  var userName = 'John Wu';
+
+  var configFn = {};
+  configFn.setUserName = function(newUserName) {
+      userName = newUserName;
+  };
+
+  var factoryFn = function() {
+    return {
+      getUserName: function() {
+        return userName;
+      }
+    }
+  };
+
+  return infoProcess.merge(configFn, { $get: factoryFn });
+});
+
+
+
+var app = angular.module('myApp', ['myApp.service']);
+app.config(function(userInfoProvider) {
+  userInfoProvider.setUserName('Alex Xu');
+});
+app.controller('UserController', ['$scope', 'userInfo', function($scope, userInfo) {
+  $scope.userName = userInfo.getUserName();
+}]);
+</script>
+</body>
+</html>

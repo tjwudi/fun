@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Service</title>
+</head>
+<body>
+
+<div ng-controller="UserController">
+  <p>Hello, {{ data.userName }}, I know you are {{ data.userAge }} years old.</p>
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var appService = angular.module('angularService', []);
+appService.factory('user', function() {
+  return {
+    getAge: function() { return 19; },
+    getName: function() { return 'John Wu'; }
+  }
+});
+
+var app = angular.module('myApp', ['angularService']);
+app.controller('UserController', ['$scope', 'user', function($scope, user) {
+  $scope.data = {};
+  $scope.data.userName = user.getName();
+  $scope.data.userAge = user.getAge();
+}]);
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Dependencies Injection</title>
+</head>
+<body>
+
+<div ng-controller="MyController">
+  <span>{{age}}</span>
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.factory('person', function() {
+  return {
+    getAge: function() { return 19; }
+  }
+});
+app.controller('MyController', function($scope, person) {
+  $scope.age = person.getAge();
+});
+</script>
+</body>
+</html>
