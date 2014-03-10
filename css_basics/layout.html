@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Layout</title>
+  <link href='http://fonts.googleapis.com/css?family=Gafata' rel='stylesheet' type='text/css'>
+  <style>
+    .bg-navy {
+      background-color: #001f3f; }
+
+    .bg-blue {
+      background-color: #0074d9; }
+
+    .bg-aqua {
+      background-color: #7fdbff; }
+
+    .bg-teal {
+      background-color: #39cccc; }
+
+    .bg-olive {
+      background-color: #3d9970; }
+
+    .bg-green {
+      background-color: #2ecc40; }
+
+    .bg-lime {
+      background-color: #01ff70; }
+
+    .bg-yellow {
+      background-color: #ffdc00; }
+
+    .bg-orange {
+      background-color: #ff851b; }
+
+    .bg-red {
+      background-color: #ff4136; }
+
+    .bg-fuchsia {
+      background-color: #f012be; }
+
+    .bg-purple {
+      background-color: #b10dc9; }
+
+    .bg-maroon {
+      background-color: #85144b; }
+
+    .bg-white {
+      background-color: white; }
+
+    .bg-gray {
+      background-color: #aaaaaa; }
+
+    .bg-silver {
+      background-color: #dddddd; }
+
+    .bg-black {
+      background-color: #111111; }
+
+    /* Colors */
+    .navy {
+      color: #001f3f; }
+
+    .blue {
+      color: #0074d9; }
+
+    .aqua {
+      color: #7fdbff; }
+
+    .teal {
+      color: #39cccc; }
+
+    .olive {
+      color: #3d9970; }
+
+    .green {
+      color: #2ecc40; }
+
+    .lime {
+      color: #01ff70; }
+
+    .yellow {
+      color: #ffdc00; }
+
+    .orange {
+      color: #ff851b; }
+
+    .red {
+      color: #ff4136; }
+
+    .fuchsia {
+      color: #f012be; }
+
+    .purple {
+      color: #b10dc9; }
+
+    .maroon {
+      color: #85144b; }
+
+    .white {
+      color: white; }
+
+    .silver {
+      color: #dddddd; }
+
+    .gray {
+      color: #aaaaaa; }
+
+    .black {
+      color: #111111; }
+
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Gafata', sans-serif;
+    }
+
+    ul {
+      list-style-position: inside;
+    }
+
+    .container {
+      margin: auto;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      width: 960px;
+    }
+
+    aside {
+      width: 310px;
+      margin-left: 10px;
+      float: left;
+      display: inline;
+    }
+
+    main {
+      width: 610px;
+      margin-right: 10px;
+      float: right;
+      display: inline;
+    }
+
+    article {
+      width: 420px;
+      float: left;
+    }
+
+    nav {
+      width: 150px;
+      float: right;
+    }
+
+    .clear {
+      clear: both;
+    }
+  </style>
+
+  <script src="http://cdn.staticfile.org/modernizr/2.7.1/modernizr.min.js"></script>
+</head>
+<body>
+<div class="container bg-aqua">
+  <main>
+    <article>
+      <hgroup>
+        <h2>This is an article</h2>
+        <h5>smarter page</h5>
+      </hgroup>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, voluptatum, voluptatibus eius numquam enim officiis amet facere quod maxime eum provident id ducimus beatae molestiae delectus. Tempore fugit distinctio dolores!</p>
+    </article>
+    <nav>
+      <ul>
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+      </ul>
+    </nav>
+  </main>
+  <aside>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, quia at quibusdam recusandae aperiam a alias repellat laudantium consectetur impedit maiores iste delectus eligendi ratione vitae sequi veritatis blanditiis eum! </p>
+  </aside>
+  <div class="clear"></div>
+</div>
+</body>
+</html>
