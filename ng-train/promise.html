@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Promise</title>
+</head>
+<body>
+
+<div ng-controller="CountController">
+  <p>Current sum: {{currentSum}}</p>
+  <p>Final sum: {{finalSum}}</p>
+</div>
+
+<script src="js/angular.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.service('Counting', ['$q', function($q) {
+  this.count = function() {
+    // calculate 1 + 2 + ... + 10
+    var deferred = $q.defer(), sum = 0, i = 1;
+    
+    setTimeout(function add() {
+      sum = sum + i;
+      i = i + 1;
+      deferred.notify(sum);
+      console.log(sum);
+      if (i <= 10) {
+        setTimeout(add, 1000);
+      }
+      if (i > 10) {
+        deferred.resolve(sum);
+      }
+    }, 1000);
+
+    return deferred.promise;
+  }
+}]);  
+
+app.controller('CountController', ['$scope', 'Counting', function($scope, Counting) {
+  Counting.count()
+    .then(function(finalSum) {
+      $scope.finalSum = finalSum;
+    }, function() {
+
+    }, function(currentSum) {
+      $scope.currentSum = currentSum;
+    });
+}]);
+</script>
+</body>
+</html>
