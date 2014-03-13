@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Color can be fun!</title>
+  <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<main>
+<section id="demo1">
+  <div class="content">
+    <span>How do you feel?</span>
+  </div>
+  <div class="ballctn">
+    <span></span><span></span><span></span>
+  </div>
+</section>
+</main>
+
+<script src="http://cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<script>
+
+(function(window) {
+
+  var $balls = $('.ballctn span'),
+      $window = $(window);
+
+  var _animateBall = function(i) {
+    $($balls[i]).animate({
+      left: '+=' + 1500
+    },{
+      duration: 5000,
+      easing: 'swing'
+    });
+
+    if (i + 1 < $balls.length) {
+      setTimeout(function() {
+        _animateBall(i + 1)
+      }.bind(this), 1000);
+    }
+  }
+
+  var animateBall = function() {
+    _animateBall(0);
+  }
+
+  window.animateBall = animateBall;
+})(window);
+
+
+function centerContent() {
+  var $window = $(window),
+      $content = $('.content'),
+      $span = $content.children('span').css('font-size', Math.min($window.height() / 9, $window.width() / 16));
+
+  $content.css('top',  ($window.height() - $content.height()) / 2);
+  $content.css('left', ($window.width()  - $content.width())  / 2);
+
+  if (! $content.hasClass('visible')) {
+    $content.addClass('visible');
+  }
+}
+
+$(document).ready(function() {
+  centerContent();
+  $(window).resize(function() {
+    centerContent();
+  });
+
+  setTimeout(window.animateBall, 1000);
+});
+</script>
+</body>
+</html>
