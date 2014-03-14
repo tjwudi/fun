@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" ng-app='restApp'>
+<head>
+  <meta charset="UTF-8">
+  <title>Restangular Test</title>
+</head>
+<body>
+
+<goods> </goods>
+
+<script src="http://cdn.staticfile.org/angular.js/1.2.0rc3/angular.min.js"></script>
+<script src="http://cdn.staticfile.org/underscore.js/1.6.0/underscore-min.js"></script>
+<script src="http://cdn.staticfile.org/restangular/1.3.1/restangular.min.js"></script>
+<script>
+var app = angular.module('restApp', ['restangular']);
+app.config(function(RestangularProvider) {
+  RestangularProvider.setBaseUrl('/api/v1');
+});
+
+app.directive('goods', function(Restangular) {
+  return {
+    restrict: 'EA',
+    scope: {},
+    templateUrl: 'ng-template/goods-list.html',
+    link: function(scope) {
+      Restangular.all('goods').getList().then(function(goods) {
+        scope.goods = goods;
+      });
+    }
+  }
+});
+</script>
+</body>
+</html>
